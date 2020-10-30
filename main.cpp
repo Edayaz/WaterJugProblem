@@ -46,15 +46,15 @@ public:
 		
 	}
 
-	void fullJug() {
+	void fillJug() {
 		water = capacity;
 		
-		cout << "Operation: Full " << capacity << " - Gallon Jug" << endl;
+		cout << "Operation: Fill " << capacity << " - Gallon Jug" << endl;
 		cout << "------------------------------------------------" << endl;
 		
 	}
 
-	void transfer(Jug& jug) {
+	void pour(Jug& jug) {
 		double transferWater = 0;
 		if (jug.getCapacity() - jug.getWater() > this->getWater()) {
 			transferWater = this->getWater();
@@ -68,7 +68,7 @@ public:
 			jug.setWater(transferWater + jug.getWater());
 		}
 		
-		cout << "Operation: Transfer " << capacity << "-gallon Jug" << "to " << jug.getCapacity() << "-gallon jug" << endl;
+		cout << "Operation: Pour water from " << capacity << " gallon jug to " << jug.getCapacity() << " gallon jug" << endl;
 		cout << "------------------------------------------------" << endl;
 	}
 };
@@ -91,22 +91,22 @@ int main() {
 	cout << "4-gallon jug contains " << fourGallonJug.getWater() << endl;
 	cout << "------------------------------------------------" << endl;
 
-	if (fourGallonJug.getWater() >= 0) {
+
+		
+		threeGallonJug.fillJug();
 		fourGallonJug.emptyJug();
-		threeGallonJug.fullJug();
+		threeGallonJug.pour(fourGallonJug);
 		
-		threeGallonJug.transfer(fourGallonJug);
+		threeGallonJug.fillJug();
 		
-		threeGallonJug.fullJug();
-		
-		threeGallonJug.transfer(fourGallonJug);
+		threeGallonJug.pour(fourGallonJug);
 		
 		fourGallonJug.emptyJug();
 		
-		threeGallonJug.transfer(fourGallonJug);
+		threeGallonJug.pour(fourGallonJug);
 		cout << "3-gallon jug contains " << threeGallonJug.getWater() << endl;
 		cout << "4-gallon jug contains " << fourGallonJug.getWater() << endl;
-	}
+	
 
 	system("pause");
 	return 0;
